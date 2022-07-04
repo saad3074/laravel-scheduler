@@ -1,6 +1,6 @@
 <?php
 
-namespace tearsilent\Bambora\requests;
+namespace tearsilent\LaravelScheduler\requests;
 
 class Schedulr
 {
