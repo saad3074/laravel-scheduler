@@ -1,10 +1,8 @@
-# Laravel Visitor Tracker and Statistics
+# Laravel Scheduler
 
 [![Packagist](https://img.shields.io/packagist/v/tearsilent/laravel-scheduler.svg?style=flat-square)](https://packagist.org/packages/tearsilent/laravel-scheduler) [![Packagist](https://img.shields.io/packagist/dm/tearsilent/laravel-scheduler.svg?style=flat-square)](https://packagist.org/packages/tearsilent/laravel-scheduler) [![Build Status](https://travis-ci.org/tearsilent/laravel-scheduler.svg?branch=master)](https://travis-ci.org/tearsilent/laravel-scheduler) [![StyleCI](https://github.styleci.io/repos/175451731/shield?branch=master)](https://styleci.io/repos/175451731) [![Packagist](https://img.shields.io/packagist/l/tearsilent/laravel-scheduler.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-Track your authenticated and unauthenticated visitors, login attempts, ajax requests, and more. Includes a controller and a bunch of routes and views to display the statistics, as well as a helper class to fetch the statistics easily (in case you want to display the statistics yourself).
 
-[Live Demo](http://statistics.voerro.com)
 
 ## Installation - Basic
 1) Install the package using composer:
