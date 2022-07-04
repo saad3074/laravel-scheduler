@@ -1,6 +1,6 @@
 <?php
 
-namespace saad3074\Bambora\requests;
+namespace tearsilent\Bambora\requests;
 
 class Schedulr
 {
