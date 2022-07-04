@@ -1,0 +1,40 @@
+{
+  "name": "tearsilent/laravel-scheduler",
+  "description": "Laravel schedule jobs handler",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Silent Tear",
+      "email": "silent.tear@myself.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=7.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.5|^7.0|^8.0|^9.3.3",
+    "orchestra/testbench": "^3.5|^3.6|^3.7|^3.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "tearsilent\\Laravel\\VisitorTracker\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "tearsilent\\Laravel\\VisitorTracker\\Test\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "tearsilent\\Laravel\\VisitorTracker\\VisitorTrackerServiceProvider"
+      ],
+      "aliases": {
+        "VisitStats": "tearsilent\\Laravel\\VisitorTracker\\Facades\\VisitStats"
+      }
+    }
+  }
+}
