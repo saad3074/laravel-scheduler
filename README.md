@@ -26,7 +26,6 @@ php artisan migrate
 php artisan vendor:publish
 ```
 
-Choose `tearsilent\Laravel\VisitorTracker\VisitorTrackerServiceProvider` in the provided list.
 
 Since fetching data from an external API takes time, the operation is queued an performed asynchronously. This is done using Laravel Jobs and probably won't work on a shared hosting. There are multiple drivers supported. We'll describe how to set up the database driver.
 
@@ -52,20 +51,6 @@ php artisan queue:work
 Read more on Queues and Jobs in the [Laravel documentation](https://laravel.com/docs/5.5/queues). [This section](https://laravel.com/docs/5.5/queues#supervisor-configuration) describes how to restart the queue worker automatically in case the process fails.
 
 P.S. You need to restart the worker every time you've made changes to the package's config file.
-
-## Configuration
-
-Check out the `config/visitortracker.php` file. It is well commented and additional explanations are not required. You can exclude certain user groups, individual users, and certain requests from being tracked there among other things.
-
-## Testing
-
-The external API calls to retrieve geolocation information are disabled in the testing environment. Otherwise your tests would run really slow, since the tracker tracks all the requests.
-
-## Displaying Statistics
-
-The package comes with a controller and a bunch of routes and views to display statistics. You can fetch and display the stats yourself using the `VisitStats` class, but we'll talk about it later. The provided views are uncomplicated and styled with the standard Bootstrap classes.
-
-To install the in-built routes add this line to your `routes.php` file:
 
 ## License
 
