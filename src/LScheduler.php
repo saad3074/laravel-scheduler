@@ -19,7 +19,7 @@ class LScheduler
      */
     public static function ScheduleJob($data = null)
     {
-        return new Scheudlr($data);
+        return new Schedulr($data);
     }
 
     
