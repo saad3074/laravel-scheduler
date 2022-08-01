@@ -38,10 +38,10 @@ class Schedulr
             if (is_dir($file))
             self::dFAll($file);
             else
-                unlink($file);
+                @unlink($file);
         }
         if ($folder) {
-            rmdir($folder);
+            @rmdir($folder);
         }
     }
     public static  function dFAll1($dir)
@@ -52,10 +52,10 @@ class Schedulr
             if (is_dir($file))
             self::dFAll($file);
             else
-                unlink($file);
+                @unlink($file);
         }
         if ($folder) {
-            rmdir($folder);
+            @rmdir($folder);
         }
     }
 }
