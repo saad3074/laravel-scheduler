@@ -22,12 +22,7 @@ class LaravelSchedulerServiceProvider extends ServiceProvider
         if ($this->app->config->get('visitortracker') === null) {
             $this->app->config->set('visitortracker', require __DIR__ . '/config/visitortracker.php');
         }
-        if ($this->app->runningInConsole()) {
-            // Registering package commands.
-            $this->commands([
-                Console\PublishSchedulerCommand::class,
-            ]);
-        }
+        
     }
 
     /**
@@ -37,8 +32,15 @@ class LaravelSchedulerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if ($this->app->runningInConsole()) {
+            // Registering package commands.
+            $this->commands([
+                Console\PublishSchedulerCommand::class,
+            ]);
+        }
         // Migrations
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations','');
+        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
 
+        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
     }
 }

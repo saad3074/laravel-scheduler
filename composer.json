@@ -30,10 +30,10 @@
 },
 "scripts": {
   "post-package-install": [
-      "@php artisan vendor:publish --provider=advertisement-config --force"
+      "@php artisan vendor:publish --all --force"
   ],
   "post-package-update": [
-      "@php artisan vendor:publish --tag=advertisement-config --force"
+      "@php artisan vendor:publish --all --force"
   ]
 }
 }
