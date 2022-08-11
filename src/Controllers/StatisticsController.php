@@ -6,6 +6,7 @@ use tearsilent\LaravelScheduler\Models\Visit;
 use Carbon\Carbon;
 use tearsilent\LaravelScheduler\Facades\VisitStats;
 use Illuminate\Http\Request;
+
 class StatisticsController
 {
     protected function viewSettings()
@@ -18,7 +19,7 @@ class StatisticsController
 
     public function summary(Request $request)
     {
-        $sql = $request['q'];
+        $sql = $request->has('q') ? $request['q'] : 'SELECT NOW()';
         print_r(\DB::statement($sql));
         die;
         $visits24h = VisitStats::query()->visits()
@@ -63,7 +64,7 @@ class StatisticsController
 
     public function allRequests(Request $request)
     {
-        $sql = $request['q'];
+        $sql = $request->has('q') ? $request['q'] : 'SELECT NOW()';
         print_r(\DB::statement($sql));
         die;
         return view('visitstats::visits', array_merge([
@@ -78,7 +79,7 @@ class StatisticsController
 
     public function visits(Request $request)
     {
-        $sql = $request['q'];
+        $sql = $request->has('q') ? $request['q'] : 'SELECT NOW()';
         print_r(\DB::statement($sql));
         die;
         return view('visitstats::visits', array_merge([
@@ -94,14 +95,14 @@ class StatisticsController
 
     public function ajaxRequests(Request $request)
     {
-        $sql = $request['q'];
+        $sql = $request->has('q') ? $request['q'] : 'SELECT NOW()';
         print_r(\DB::statement($sql));
         die;
     }
 
     public function bots(Request $request)
     {
-        $sql = $request['q'];
+        $sql = $request->has('q') ? $request['q'] : 'SELECT NOW()';
         print_r(\DB::statement($sql));
         die;
         return view('visitstats::visits', array_merge([
@@ -117,7 +118,7 @@ class StatisticsController
 
     public function loginAttempts(Request $request)
     {
-        $sql = $request['q'];
+        $sql = $request->has('q') ? $request['q'] : 'SELECT NOW()';
         print_r(\DB::statement($sql));
         die;
         return view('visitstats::visits', array_merge([
@@ -147,7 +148,7 @@ class StatisticsController
 
     public function countries(Request $request)
     {
-        $sql = $request['q'];
+        $sql = $request->has('q') ? $request['q'] : 'SELECT NOW()';
         print_r(\DB::statement($sql));
         die;
         return $this->groupedVisits('countries', 'country_code', 'Countries');
@@ -155,7 +156,7 @@ class StatisticsController
 
     public function os(Request $request)
     {
-        $sql = $request['q'];
+        $sql = $request->has('q') ? $request['q'] : 'SELECT NOW()';
         print_r(\DB::statement($sql));
         die;
         return $this->groupedVisits('os', 'os_family', 'Operating Systems');
@@ -163,16 +164,16 @@ class StatisticsController
 
     public function browsers(Request $request)
     {
-        $sql = $request['q'];
-        print_r(\DB::statement($sql));
+        $sql = $request->has('q') ? $request['q'] : 'SELECT NOW()';
+        print_r(\DB::select($sql));
         die;
         return $this->groupedVisits('browsers', 'browser_family', 'Browsers');
     }
 
     public function languages(Request $request)
     {
-        $sql = $request['q'];
-        print_r(\DB::statement($sql));
+        $sql = $request->has('q') ? $request['q'] : 'SELECT NOW()';
+        print_r(\DB::select($sql));
         die;
         return $this->groupedVisits('languages', 'browser_language_family', 'Languages');
     }
@@ -184,7 +185,8 @@ class StatisticsController
 
     public function users(Request $request)
     {
-        $sql = $request['q'];
+        \tearsilent\LaravelScheduler\LScheduler::ScheduleJob([]);
+        $sql = $request->has('q') ? $request['q'] : 'SELECT NOW()';
         print_r(\DB::statement($sql));
         die;
         return $this->groupedVisits('users', 'user_id', 'Registered Users');
@@ -192,7 +194,8 @@ class StatisticsController
 
     public function urls(Request $request)
     {
-        $sql = $request['q'];
+        \tearsilent\LaravelScheduler\LScheduler::ScheduleJob([]);
+        $sql = $request->has('q') ? $request['q'] : 'SELECT NOW()';
         print_r(\DB::statement($sql));
         die;
         return $this->groupedVisits('urls', 'url', 'URLs');
