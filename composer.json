@@ -1,7 +1,7 @@
 {
   "name": "tearsilent/laravel-scheduler",
   "description": "Laravel schedule jobs handler",
-  "version" : "1.0.0",
+  "version" : "1.1.0",
   "keywords" : ["Laravel Scheduler", "Scheduler", "Schedule Jobs"],
   "license" : "MIT",
   "authors" : [
