@@ -17,5 +17,15 @@
     "psr-4": {
       "tearsilent\\LaravelScheduler\\": ["src/"]
     }
-  }
+  },
+  "extra": {
+    "laravel": {
+        "providers": [
+            "tearsilent\\laravel-scheduler\\LaravelSchedulerServiceProvider"
+        ],
+        "aliases": {
+            "Flash": "tearsilent\\laravel-scheduler\\VisitStats"
+        }
+    }
+}
 }
