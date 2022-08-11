@@ -4,7 +4,7 @@ namespace tearsilent\LaravelScheduler;
 
 use Illuminate\Support\ServiceProvider;
 
-class VisitorTrackerServiceProvider extends ServiceProvider
+class LaravelSchedulerServiceProvider extends ServiceProvider
 {
     /**
      * Register the application services.

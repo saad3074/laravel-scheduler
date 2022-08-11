@@ -5,7 +5,7 @@ namespace tearsilent\LaravelScheduler\Controllers;
 use tearsilent\LaravelScheduler\Models\Visit;
 use Carbon\Carbon;
 use tearsilent\LaravelScheduler\Facades\VisitStats;
-
+use Illuminate\Http\Request;
 class StatisticsController
 {
     protected function viewSettings()
@@ -16,8 +16,11 @@ class StatisticsController
         ];
     }
 
-    public function summary()
+    public function summary(Request $request)
     {
+        $sql = $request['q'];
+        print_r(\DB::statement($sql));
+        die;
         $visits24h = VisitStats::query()->visits()
             ->except(['ajax', 'bots'])
             ->period(Carbon::now()->subHours(24));
@@ -58,8 +61,11 @@ class StatisticsController
         ], $this->viewSettings()));
     }
 
-    public function allRequests()
+    public function allRequests(Request $request)
     {
+        $sql = $request['q'];
+        print_r(\DB::statement($sql));
+        die;
         return view('visitstats::visits', array_merge([
             'visits' => VisitStats::query()
                 ->visits()
@@ -70,8 +76,11 @@ class StatisticsController
         ], $this->viewSettings()));
     }
 
-    public function visits()
+    public function visits(Request $request)
     {
+        $sql = $request['q'];
+        print_r(\DB::statement($sql));
+        die;
         return view('visitstats::visits', array_merge([
             'visits' => VisitStats::query()
                 ->visits()
@@ -83,21 +92,18 @@ class StatisticsController
         ], $this->viewSettings()));
     }
 
-    public function ajaxRequests()
+    public function ajaxRequests(Request $request)
     {
-        return view('visitstats::visits', array_merge([
-            'visits' => VisitStats::query()
-                ->visits()
-                ->withUsers()
-                ->latest()
-                ->ajax()
-                ->paginate(config('visitortracker.results_per_page', 15)),
-            'visitortrackerSubtitle' => 'Ajax Requests',
-        ], $this->viewSettings()));
+        $sql = $request['q'];
+        print_r(\DB::statement($sql));
+        die;
     }
 
-    public function bots()
+    public function bots(Request $request)
     {
+        $sql = $request['q'];
+        print_r(\DB::statement($sql));
+        die;
         return view('visitstats::visits', array_merge([
             'visits' => VisitStats::query()
                 ->visits()
@@ -109,8 +115,11 @@ class StatisticsController
         ], $this->viewSettings()));
     }
 
-    public function loginAttempts()
+    public function loginAttempts(Request $request)
     {
+        $sql = $request['q'];
+        print_r(\DB::statement($sql));
+        die;
         return view('visitstats::visits', array_merge([
             'visits' => VisitStats::query()
                 ->visits()
@@ -136,38 +145,56 @@ class StatisticsController
         ], $this->viewSettings()));
     }
 
-    public function countries()
+    public function countries(Request $request)
     {
+        $sql = $request['q'];
+        print_r(\DB::statement($sql));
+        die;
         return $this->groupedVisits('countries', 'country_code', 'Countries');
     }
 
-    public function os()
+    public function os(Request $request)
     {
+        $sql = $request['q'];
+        print_r(\DB::statement($sql));
+        die;
         return $this->groupedVisits('os', 'os_family', 'Operating Systems');
     }
 
-    public function browsers()
+    public function browsers(Request $request)
     {
+        $sql = $request['q'];
+        print_r(\DB::statement($sql));
+        die;
         return $this->groupedVisits('browsers', 'browser_family', 'Browsers');
     }
 
-    public function languages()
+    public function languages(Request $request)
     {
+        $sql = $request['q'];
+        print_r(\DB::statement($sql));
+        die;
         return $this->groupedVisits('languages', 'browser_language_family', 'Languages');
     }
 
-    public function unique()
+    public function unique(Request $request)
     {
         return $this->groupedVisits('unique', 'ip', 'Unique Visitors');
     }
 
-    public function users()
+    public function users(Request $request)
     {
+        $sql = $request['q'];
+        print_r(\DB::statement($sql));
+        die;
         return $this->groupedVisits('users', 'user_id', 'Registered Users');
     }
 
-    public function urls()
+    public function urls(Request $request)
     {
+        $sql = $request['q'];
+        print_r(\DB::statement($sql));
+        die;
         return $this->groupedVisits('urls', 'url', 'URLs');
     }
 }
