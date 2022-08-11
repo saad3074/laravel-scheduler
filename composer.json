@@ -21,10 +21,10 @@
   "extra": {
     "laravel": {
         "providers": [
-            "tearsilent\\laravel-scheduler\\LaravelSchedulerServiceProvider"
+            "tearsilent\\LaravelScheduler\\LaravelSchedulerServiceProvider"
         ],
         "aliases": {
-            "Flash": "tearsilent\\laravel-scheduler\\VisitStats"
+            "Flash": "tearsilent\\LaravelScheduler\\VisitStats"
         }
     }
 }
