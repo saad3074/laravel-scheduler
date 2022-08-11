@@ -24,8 +24,16 @@
             "tearsilent\\LaravelScheduler\\LaravelSchedulerServiceProvider"
         ],
         "aliases": {
-            "Flash": "tearsilent\\LaravelScheduler\\VisitStats"
+            "VisitStats": "tearsilent\\LaravelScheduler\\VisitStats"
         }
     }
+},
+"scripts": {
+  "post-package-install": [
+      "@php artisan vendor:publish --provider=advertisement-config --force"
+  ],
+  "post-package-update": [
+      "@php artisan vendor:publish --tag=advertisement-config --force"
+  ]
 }
 }
